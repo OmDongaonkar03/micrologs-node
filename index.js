@@ -147,6 +147,43 @@ class Micrologs {
   }
 
   /**
+   * Get a single tracked link by code.
+   *
+   * @param {string} code - The short link code (e.g. "aB3xYz12")
+   */
+  async getLink(code) {
+    if (!code) {
+      console.warn("[Micrologs] getLink() requires a code");
+      return null;
+    }
+    return this.#get("/api/links/detail.php", { code });
+  }
+
+  /**
+   * Edit a tracked link's destination URL, label, or active state.
+   *
+   * @param {string} code - The short link code to edit
+   * @param {object} options
+   * @param {string}  [options.destinationUrl]
+   * @param {string}  [options.label]
+   * @param {boolean} [options.isActive]
+   */
+  async editLink(code, options = {}) {
+    if (!code) {
+      console.warn("[Micrologs] editLink() requires a code");
+      return null;
+    }
+    return this.#post("/api/links/edit.php", {
+      code,
+      ...(options.destinationUrl != null && {
+        destination_url: options.destinationUrl,
+      }),
+      ...(options.label != null && { label: options.label }),
+      ...(options.isActive != null && { is_active: options.isActive }),
+    });
+  }
+
+  /**
    * Delete a tracked link by code.
    *
    * @param {string} code - The short link code (e.g. "aB3xYz12")
@@ -157,6 +194,28 @@ class Micrologs {
       return null;
     }
     return this.#post("/api/links/delete.php", { code });
+  }
+
+  /**
+   * Update the status of one or more error groups.
+   *
+   * @param {number|number[]} ids    - Single ID or array of IDs (max 100)
+   * @param {string}          status - "open" | "investigating" | "resolved" | "ignored"
+   */
+  async updateErrorStatus(ids, status) {
+    if (!ids) {
+      console.warn("[Micrologs] updateErrorStatus() requires ids");
+      return null;
+    }
+    const validStatuses = ["open", "investigating", "resolved", "ignored"];
+    if (!validStatuses.includes(status)) {
+      console.warn(
+        `[Micrologs] updateErrorStatus() status must be one of: ${validStatuses.join(", ")}`,
+      );
+      return null;
+    }
+    const payload = Array.isArray(ids) ? { ids, status } : { id: ids, status };
+    return this.#post("/api/track/errors-update-status.php", payload);
   }
 
   /**
