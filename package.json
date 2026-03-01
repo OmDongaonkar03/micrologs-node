@@ -1,0 +1,26 @@
+{
+    "name": "@micrologs/node",
+    "version": "0.1.0",
+    "description": "Node.js SDK for Micrologs — self-hosted analytics and error tracking",
+    "main": "index.js",
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "keywords": [
+        "analytics",
+        "error-tracking",
+        "self-hosted",
+        "micrologs",
+        "privacy"
+    ],
+    "author": "Om Dongaonkar <officialom@gmail.com>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/OmDongaonkar03/micrologs-node"
+    },
+    "bugs": {
+        "url": "https://github.com/OmDongaonkar03/micrologs-node/issues"
+    },
+    "homepage": "https://github.com/OmDongaonkar03/Micrologs"
+}
