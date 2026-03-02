@@ -1,5 +1,7 @@
 # @micrologs/node
 
+[![npm](https://img.shields.io/npm/v/@micrologs/node)](https://www.npmjs.com/package/@micrologs/node)
+
 Node.js SDK for [Micrologs](https://github.com/OmDongaonkar03/Micrologs) - self-hosted analytics and error tracking.
 
 **Requires Node.js 18+**

@@ -17,7 +17,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/OmDongaonkar03/micrologs-node"
+        "url": "git+https://github.com/OmDongaonkar03/micrologs-node.git"
     },
     "bugs": {
         "url": "https://github.com/OmDongaonkar03/micrologs-node/issues"
