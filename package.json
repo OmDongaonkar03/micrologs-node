@@ -1,8 +1,14 @@
 {
     "name": "@micrologs/node",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Node.js SDK for Micrologs - self-hosted analytics and error tracking",
     "main": "index.js",
+    "exports": {
+        ".": {
+            "import": "./index.mjs",
+            "require": "./index.js"
+        }
+    },
     "engines": {
         "node": ">=18.0.0"
     },
