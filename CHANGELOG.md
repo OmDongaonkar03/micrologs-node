@@ -4,6 +4,17 @@ All notable changes to `@micrologs/node` will be documented here.
 
 ---
 
+## [1.0.1] - 2026-03-02
+
+### Added
+- ESM support via `index.mjs` wrapper — `import Micrologs from "@micrologs/node"` now works correctly alongside the existing CommonJS `require()`
+- `exports` field in `package.json` — Node resolves the correct entry point automatically based on the caller's module system
+
+### Fixed
+- ESM import example in README was previously incorrect — the package was CJS only. Both `require` and `import` now work as documented.
+
+---
+
 ## [1.0.0] - 2026-03-02
 
 Complete API coverage. Bumped to v1.0.0 - the SDK now wraps every endpoint the Micrologs engine exposes.
