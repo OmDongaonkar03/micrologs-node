@@ -4,6 +4,15 @@ All notable changes to `@micrologs/node` will be documented here.
 
 ---
 
+## [1.1.0] - 2026-03-03
+
+### Fixed
+- `#post` and `#get`: non-JSON error responses no longer silently produce an empty
+  object. Falls back to `res.statusText` so the warning always contains a useful message
+  (e.g. `[Micrologs] 401: Unauthorized` instead of `[Micrologs] Request failed`)
+
+---
+
 ## [1.0.1] - 2026-03-02
 
 ### Added

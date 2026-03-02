@@ -41,10 +41,11 @@ class Micrologs {
         body: JSON.stringify(payload),
       });
 
-      const data = await res.json().catch(() => ({}));
+      const data = await res.json().catch(() => null);
 
       if (!res.ok) {
-        throw new Error(`${res.status}: ${data.message ?? "Request failed"}`);
+        const msg = data?.message ?? res.statusText ?? "Request failed";
+        throw new Error(`${res.status}: ${msg}`);
       }
 
       return data;
@@ -69,10 +70,11 @@ class Micrologs {
         headers: { "X-API-Key": this.#key },
       });
 
-      const data = await res.json().catch(() => ({}));
+      const data = await res.json().catch(() => null);
 
       if (!res.ok) {
-        throw new Error(`${res.status}: ${data.message ?? "Request failed"}`);
+        const msg = data?.message ?? res.statusText ?? "Request failed";
+        throw new Error(`${res.status}: ${msg}`);
       }
 
       return data;

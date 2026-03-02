@@ -1,6 +1,6 @@
 {
     "name": "@micrologs/node",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "Node.js SDK for Micrologs - self-hosted analytics and error tracking",
     "main": "index.js",
     "exports": {
