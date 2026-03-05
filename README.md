@@ -82,12 +82,12 @@ All fields except `message` are optional.
     "success": true,
     "message": "OK",
     "data": {
-        "group_id": 12
+        "queued": true
     }
 }
 ```
 
-`group_id` is the error group this occurrence was added to. Useful for logging on your side.
+The error is queued for async processing — the worker handles the DB write in the background.
 
 ---
 
@@ -307,6 +307,14 @@ const result = await client.analytics.utm({ range: "30d" })
 // All error groups
 const result = await client.analytics.errors({ range: "30d" })
 
+// Filtered
+const filtered = await client.analytics.errors({
+    range:       "30d",
+    status:      "open",
+    severity:    "critical",
+    environment: "production",
+})
+
 // Daily error trend across all groups
 const trend = await client.analytics.errorsTrend({ range: "30d" })
 
@@ -338,6 +346,13 @@ await client.updateErrorStatus([12, 15, 22], "ignored")
 
 ```javascript
 const result = await client.analytics.audits({ range: "7d" })
+
+// Filtered
+const filtered = await client.analytics.audits({
+    range:  "30d",
+    action: "user.login",
+    actor:  "user@email.com",
+})
 ```
 
 ---
